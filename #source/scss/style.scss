@@ -284,7 +284,7 @@ body{
 		border-radius: 50%;
 		margin: 0px 20px 0px 0px;
 		border: 4px solid #5D8296;
-		background: #FFFFFF url('.//img/info/avatar.png') 50% 50%/95% 95% no-repeat;
+		background: #FFFFFF url('/img/info/avatar.png') 50% 50%/95% 95% no-repeat;
 		@media (max-width:767px) {
 			width: 180px;
 			height: 180px;
@@ -359,7 +359,6 @@ body{
 	}
 }
 .skills {
-
 }
 
 .skills__header{
@@ -594,10 +593,10 @@ body{
 	}
 }
 .message-contacts__item--1 {
-	background: url(.//img/contacts/1.svg) left no-repeat;
+	background: url(/img/contacts/1.svg) left no-repeat;
 }
 .message-contacts__item--2 {
-	background: url(.//img/contacts/2.svg) left no-repeat;
+	background: url(/img/contacts/2.svg) left no-repeat;
 }
 .item-contacts__form {
 	width: 100%;
