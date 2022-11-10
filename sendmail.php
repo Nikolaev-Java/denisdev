@@ -3,7 +3,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require './/PHPMailer-6.6.5/src/Exception.php';
-require './/PHPMailer-6.6.5/src/PHPmailer.php';
+require './/PHPMailer-6.6.5/src/PHPMailer.php';
 
 $mail = new PHPmailer(true);
 $mail->CharSet = 'UTF-8';
@@ -11,7 +11,7 @@ $mail->setLanguage('ru', 'phpmailer/language/');
 $mail->isHTML(true);
 $mail->setFrom('info@denisdev.com');
 $mail->addAddress('epselent33@gmail.com');
-$mail->Subject = "заявка с сайта ";
+$mail->Subject = 'заявка с сайта';
 $name = $_POST['name'];
 $email = $_POST['email'];
 $title = $_POST['title'];
@@ -36,15 +36,15 @@ $name = trim($name);
 $email = trim($email);
 $title = trim($title);
 $message = trim($message);
-$body = '<h1><strong>' . $title . '</strong></h1>';
+$body = '<h1>' . $title . '</h1>';
 $body .= '<p><strong>Имя: </srong>' . $name . '</p>';
 $body .= '<p><strong>Email: </srong>' . $email . '</p>';
-$body .= '<p><strong>Сообщение: <.srong>' . $titmessagele . '</p>';
-if (!empty($_FILES['tamplets']['tmp_name'])) {
-	$filePath = __DIR__ . "/files/" . $_FILES['tamplets']['name'];
-	if (copy($_FILES['tamplets']['tmp_name'], $filePath)) {
+$body .= '<p><strong>Сообщение: </srong>' . $message . '</p>';
+if (!empty($_FILES['templates']['tmp_name'])) {
+	$filePath = __DIR__ . "/files/" . $_FILES['templates']['name'];
+	if (copy($_FILES['templates']['tmp_name'], $filePath)) {
 		$fileAtach = $filePath;
-		$body .= '<p><strong>Фото в приложении<.srong></p>';
+		$body .= '<p><strong>Фото в приложении</srong></p>';
 		$mail->addAttachment($fileAtach);
 	}
 }
@@ -54,7 +54,7 @@ if (!$mail->send()) {
 } else {
 	$mes = 'Данные отправлены';
 }
-$response = ['message' => $message];
+$response = ['message' => $mes];
 header('Content-type: application/json');
 echo json_encode($response);
 ?>

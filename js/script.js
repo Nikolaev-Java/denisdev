@@ -113,9 +113,14 @@ form.addEventListener('submit', formSend);
 async function formSend(e) {
 	e.preventDefault();
 	let error = inputValidation(form);
-	let formData = new FormData(form);
-	formData.append = ('tamplets', inputFile.files[0]);
+
+
+
 	if (error == 0) {
+		let formData = new FormData(form);
+		for (const [name, value] of formData) {
+			console.log(`${name} = ${value}`);
+		}
 		form.classList.add("_sending");
 		let response = await fetch('sendmail.php', {
 			method: 'POST',
