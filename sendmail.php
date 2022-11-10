@@ -1,7 +1,16 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require './/PHPMailer-6.6.5/src/Exception.php';
+require './/PHPMailer-6.6.5/src/PHPmailer.php';
+
 $mail = new PHPmailer(true);
+$mail->CharSet = 'UTF-8';
+$mail->setLanguage('ru', 'phpmailer/language/');
+$mail->isHTML(true);
 $mail->setFrom('info@denisdev.com');
-$mail->setAdress('epselent33@gmail.com');
+$mail->addAddress('epselent33@gmail.com');
 $mail->Subject = "заявка с сайта ";
 $name = $_POST['name'];
 $email = $_POST['email'];
