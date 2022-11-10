@@ -1,4 +1,8 @@
 <?php
+$mail = new PHPmailer(true);
+$mail->setFrom('info@denisdev.com');
+$mail->setAdress('epselent33@gmail.com');
+$mail->Subject = "заявка с сайта ";
 $name = $_POST['name'];
 $email = $_POST['email'];
 $title = $_POST['title'];
@@ -23,9 +27,25 @@ $name = trim($name);
 $email = trim($email);
 $title = trim($title);
 $message = trim($message);
-if (mail("epselent33@gmail.com", "заявка с сайта" . $title, "Имя: " . $name . "Email: " . $email . "Сообщение: " . $message . "From: info@denisdev.com \r\n")) {
-	echo "ok";
-} else {
-	echo "not";
+$body = '<h1><strong>' . $title . '</strong></h1>';
+$body .= '<p><strong>Имя: </srong>' . $name . '</p>';
+$body .= '<p><strong>Email: </srong>' . $email . '</p>';
+$body .= '<p><strong>Сообщение: <.srong>' . $titmessagele . '</p>';
+if (!empty($_FILES['tamplets']['tmp_name'])) {
+	$filePath = __DIR__ . "/files/" . $_FILES['tamplets']['name'];
+	if (copy($_FILES['tamplets']['tmp_name'], $filePath)) {
+		$fileAtach = $filePath;
+		$body .= '<p><strong>Фото в приложении<.srong></p>';
+		$mail->addAttachment($fileAtach);
+	}
 }
+$mail->Body = $body;
+if (!$mail->send()) {
+	$mes = 'Ошибка';
+} else {
+	$mes = 'Данные отправлены';
+}
+$response = ['message' => $message];
+header('Content-type: application/json');
+echo json_encode($response);
 ?>

@@ -33,7 +33,7 @@
 					<nav class="menu__body">
 						<ul class="menu__list">
 							<li class="menu__item">
-								<a data-goto=".page" href="#" class="menu__link">Home</a>
+								<a data-goto=".info" href="#" class="menu__link">Info</a>
 							</li>
 							<li class="menu__item">
 								<a data-goto=".skills" href="#" class="menu__link">Skills</a>
@@ -322,27 +322,40 @@
 						<div class="contacts__columns contacts__columns--form">
 							<div class="contacts__item item-contacts">
 								<div class="item-contacts__form">
-									<form action="sendmail.php" method="post" class="contacts-form">
+									<form action="sendmail.php" id="form" class="contacts-form">
 										<div class="contacts-form__column">
-											<div class="contacts-form__column-line">
-												<input type="text" class="input" name="name" required placeholder="Name"
+											<div class="contacts-form__line contacts-form__line--columns">
+												<input type="text" id="name" class="input _req" name="name" placeholder="Name"
 													autocomplete="off">
+												<label for="name" class="form__error form__error--name">Введите имя</label>
 											</div>
-											<div class="contacts-form__column-line">
-												<input type="email" class="input" name="email" required placeholder="Email"
+											<div class="contacts-form__line contacts-form__line--columns">
+												<input type="text" id="email" class="input _req" name="email" placeholder="Email"
 													autocomplete="off">
+												<label for="email" class="form__error form__error--email">Введите E-mail</label>
 											</div>
 										</div>
 										<div class="contacts-form__line">
-											<input type="text" class="input" name="title" required placeholder="Title"
+											<input type="text" id="title" class="input _req" name="title" placeholder="Title"
 												autocomplete="off">
+											<label for="title" class="form__error form__error--title">Введите Тему
+												обращения</label>
 										</div>
 										<div class="contacts-form__line">
-											<textarea class="input" name="message" required placeholder="Message"
+											<textarea class="input  _req" id="message" name="message" placeholder="Message"
 												autocomplete="off"></textarea>
+											<label for="message" class="form__error form__error--messge">Введите сообщение</label>
+										</div>
+										<div class="contacts-form__line">
+											<div class="form__label">Add file</div>
+											<input type="file" id="file" accept=".psd, .fig, .sketch" name="templates"
+												class="file__input">
+											<label for="file" class="contacts-form__file-button btn">Выбрать</label>
+											<label class="form__error form__error--file">неверный формат
+												файла</label>
 										</div>
 										<div class="contacts-form__button">
-											<button type="submit" class="btn-submit">Send</button>
+											<button type="submit" class="btn-submit btn">Send</button>
 										</div>
 									</form>
 								</div>

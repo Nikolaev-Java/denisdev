@@ -752,17 +752,16 @@ body._touch .preview-portfolio {
   background: rgba(12, 21, 29, 0.8) url(/img/form/load.gif) center/30px 30px no-repeat;
   opacity: 0;
   visibility: hidden;
+  transition: all 0.5s ease 0s;
+}
+.contacts-form._sending::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 .contacts-form__column {
   display: flex;
-  margin: 0px -7px;
-}
-
-.contacts-form__column-line {
-  flex: 0 1 50%;
-  padding: 0px 8px;
-  margin: 0px 0px 16px 0px;
+  margin: 0px -8px;
 }
 
 .input {
@@ -785,18 +784,93 @@ body._touch .preview-portfolio {
 .input::placeholder {
   color: #ABB2BF;
 }
+.input._error {
+  box-shadow: 0px 0px 4px 1px red;
+}
+.input._anim {
+  -webkit-animation: shake 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+          animation: shake 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate(0, 0);
+}
+.input:focus {
+  box-shadow: 0px 0px 4px 1px #cdd2da;
+}
 
+@-webkit-keyframes shake {
+  10%, 90% {
+    transform: translate(-1px, 0);
+  }
+  20%, 80% {
+    transform: translate(2px, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate(-4px, 0);
+  }
+  40%, 60% {
+    transform: translate(4px, 0);
+  }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate(-1px, 0);
+  }
+  20%, 80% {
+    transform: translate(2px, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate(-4px, 0);
+  }
+  40%, 60% {
+    transform: translate(4px, 0);
+  }
+}
 textarea.input {
   resize: none;
   height: 119px;
   padding: 8px;
 }
 
+.contacts-form__line {
+  position: relative;
+}
+.contacts-form__line._error .form__error {
+  opacity: 1;
+}
+.contacts-form__line--columns {
+  flex: 0 1 50%;
+  padding: 0px 8px;
+  margin: 0px 0px 20px 0px;
+}
 .contacts-form__line:not(:last-child) {
-  margin: 0px 0px 16px 0px;
+  margin: 0px 0px 20px 0px;
 }
 
-.btn-submit {
+.form__error {
+  display: inline-block;
+  color: red;
+  position: absolute;
+  bottom: -17px;
+  opacity: 0;
+  transition: all 0.5s ease 0s;
+}
+.form__error--file {
+  position: static;
+  line-height: 37px;
+}
+
+.form__label {
+  margin: 0px 0px 10px 0px;
+  font-size: 16px;
+}
+
+.file__input {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.btn {
   font-weight: 500;
   font-size: 16px;
   line-height: 37px;
@@ -807,20 +881,17 @@ textarea.input {
   padding: 0px 16px;
   height: 37px;
   background: #0C151D;
-  transition: all 0.5s ease 0s;
+  transition: border 0.5s ease 0s, box-shadow 0.1 ease 0s;
+  cursor: pointer;
 }
-.btn-submit:hover {
+.btn:hover {
   color: #e3d7e7;
   border: 1px solid rgb(184, 6, 164);
-  box-shadow: 0px 0px 2px 1px rgba(255, 5, 255, 0.77) inset;
-  -webkit-box-shadow: 0px 0px 2px 1px rgba(255, 5, 255, 0.77) inset;
-  -moz-box-shadow: 0px 0px 2px 1px rgba(255, 5, 255, 0.77) inset;
+  box-shadow: 0px 1px 2px rgba(255, 5, 255, 0.8);
 }
-.btn-submit:active {
-  box-shadow: 0px 0px 4px 2px rgba(255, 5, 255, 0.77) inset;
-  -webkit-box-shadow: 0px 0px 4px 2px rgba(255, 5, 255, 0.77) inset;
-  -moz-box-shadow: 0px 0px 4px 2px rgba(255, 5, 255, 0.77) inset;
+.btn:active {
+  box-shadow: 0px 0px 2px 3px rgba(255, 5, 255, 0.422) inset;
+  -webkit-box-shadow: 0px 0px 2px 3px rgba(255, 5, 255, 0.422) inset;
+  -moz-box-shadow: 0px 0px 2px 3px rgba(255, 5, 255, 0.422) inset;
   color: rgba(171, 163, 174, 0.937254902);
-  font-size: 15px;
-  padding: 0px 17.2px;
 }

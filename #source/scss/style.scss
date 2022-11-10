@@ -613,16 +613,18 @@ position: relative;
 	background: rgba(12, 21, 29, 0.8) url(/img/form/load.gif) center/30px 30px no-repeat;
 	opacity: 0;
 	visibility: hidden;
+	transition: all 0.5s ease 0s;
+}
+&._sending{
+	&::after{
+		opacity: 1;
+		visibility: visible;
+	}
 }
 }
 .contacts-form__column {
 	display: flex;
-	margin: 0px -7px;
-}
-.contacts-form__column-line {
-	flex:0 1 50%;
-	padding: 0px 8px;
-	margin: 0px 0px 16px 0px;
+	margin: 0px -8px;
 }
 .input {
 	font-size: 16px;
@@ -633,24 +635,86 @@ position: relative;
 	width: 100%;
 	background: #0C151D;
 	padding: 0px 8px;
-	color: #fff;
+	color: #fff;	
 	&::placeholder{
 		color: #ABB2BF;
 	}
+	&._error{
+		box-shadow: 0px 0px 4px 1px red;
+	}
+	&._anim{		
+		animation: shake 0.8s cubic-bezier(.36,.07,.19,.97) both;
+		transform: translate(0,0);
+	}
+	&:focus{
+		box-shadow: 0px 0px 4px 1px #cdd2da;
+	}
+
 }
+
+@keyframes shake {
+	10%, 90% {
+	  transform: translate(-1px, 0);
+	}
+	
+	20%, 80% {
+	  transform: translate(2px, 0);
+	}
+ 
+	30%, 50%, 70% {
+	  transform: translate(-4px, 0);
+	}
+ 
+	40%, 60% {
+	  transform: translate(4px, 0);
+	}
+ }
 textarea.input{
 	resize: none;
 	height: 119px;
 	padding: 8px;
 }
 .contacts-form__line {
+	position: relative;
+	&._error{
+		.form__error{
+			opacity: 1;
+		}
+	}
+	&--columns{
+		flex:0 1 50%;
+	padding: 0px 8px;
+	margin: 0px 0px 20px 0px;
+	}
 	&:not(:last-child){
-		margin: 0px 0px 16px 0px;
+		margin: 0px 0px 20px 0px;
+	}
+
+}
+.form__error{
+	display: inline-block;
+	color: red;
+	position: absolute;
+	bottom: -17px;
+	opacity: 0;
+	transition: all 0.5s ease 0s;
+	&--file{
+		position: static;
+		line-height: 37px;
 	}
 }
 .contacts-form__button {
 }
-.btn-submit {
+.form__label{
+	margin: 0px 0px 10px 0px;
+	font-size: 16px;
+}
+.file__input{
+	position: absolute;
+	opacity: 0;
+	visibility: hidden;
+}
+.btn {
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 37px;
@@ -661,22 +725,17 @@ textarea.input{
 	padding: 0px 16px;
 	height: 37px;
 	background: #0C151D;
-	transition: all 0.5s ease 0s;
+	transition: border 0.5s ease 0s, box-shadow 0.1 ease 0s;
+	cursor: pointer;
 	&:hover{
 		color: #e3d7e7;
 		border: 1px solid rgb(184, 6, 164);
-		
-	box-shadow: 0px 0px 2px 1px rgba(255, 5, 255, 0.77) inset;
-	-webkit-box-shadow: 0px 0px 2px 1px rgba(255, 5, 255, 0.77)  inset;
-	-moz-box-shadow: 0px 0px 2px 1px rgba(255, 5, 255, 0.77)  inset;
-	
+		box-shadow: 0px 1px 2px rgba(255, 5, 255, 0.8);
 	}
 	&:active{
-		box-shadow: 0px 0px 4px 2px rgba(255, 5, 255, 0.77) inset;
-	-webkit-box-shadow: 0px 0px 4px 2px rgba(255, 5, 255, 0.77)  inset;
-	-moz-box-shadow: 0px 0px 4px 2px rgba(255, 5, 255, 0.77)  inset;
+		box-shadow: 0px 0px 2px 3px rgba(255, 5, 255, 0.422) inset;
+	-webkit-box-shadow: 0px 0px 2px 3px rgba(255, 5, 255, 0.422)  inset;
+	-moz-box-shadow: 0px 0px 2px 3px rgba(255, 5, 255, 0.422)  inset;
 	color: #aba3aeef;
-	font-size: 15px;
-	padding: 0px 17.2px;
 	}
 }
