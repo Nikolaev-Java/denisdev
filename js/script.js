@@ -118,9 +118,6 @@ async function formSend(e) {
 
 	if (error == 0) {
 		let formData = new FormData(form);
-		for (const [name, value] of formData) {
-			console.log(`${name} = ${value}`);
-		}
 		form.classList.add("_sending");
 		let response = await fetch('sendmail.php', {
 			method: 'POST',
@@ -129,13 +126,19 @@ async function formSend(e) {
 		if (response.ok) {
 			let result = await response.json();
 			alert(result.message);
-			form.reset();
+			reserForm(form);
+
 			form.classList.remove("_sending");
 		} else {
 			alert('ошибка');
 			form.classList.remove("_sending");
 		}
 	}
+}
+function reserForm(form) {
+	form.reset();
+	removeError(inputFile);
+	button.innerText = "Выбрать";
 }
 function inputValidation(form) {
 	let error = 0;
@@ -176,7 +179,6 @@ function validEmail(input) {
 	}
 }
 const input = document.querySelectorAll(".input");
-console.log(document.querySelector(`.${input[0].className} + .form__error`));
 input.forEach(input => {
 	input.addEventListener("change", function () {
 		removeError(input);
@@ -188,30 +190,45 @@ input.forEach(input => {
 	})
 });
 const inputFile = document.getElementById("file");
+const button = document.querySelector(".contacts-form__file-button");
 inputFile.addEventListener("change", () => {
 	uploadFile(inputFile.files[0]);
 });
 function uploadFile(file) {
 	removeError(inputFile);
-	if (!/\.psd|fig|sketh$/.test(file.name)) {
+	document.querySelector('.form__error--file').textContent = "неверный формат файла";
+	let type = file.name.split('.').pop();
+	if (!/(psd)$|(fig)$|(sketh)$/.test(type)) {
 		addError(inputFile);
 		inputFile.value = "";
+		button.innerText = "Выбрать";
+
 		return;
 	}
 	if (file.size > 5 * 1024 * 1024) {
 		addError(inputFile);
 		document.querySelector('.form__error--file').textContent = "размер файла не должен превышать 5 Мб";
 		inputFile.value = "";
+		button.innerText = "Выбрать";
 		return;
-	} else {
-		document.querySelector('.form__error--file').textContent = "неверный формат файла";
 	}
-
+	button.innerText = "файл добавлен";
 }
+/* -------------------------Обработка формы--------------------------*/
 
+/* ------------------------Смена темы ------------------------------*/
 
+const buttonChangeTheme = document.querySelector(".menu_btn-change-theme");
+buttonChangeTheme.addEventListener('click', () => {
+	document.body.classList.toggle("_light-theme");
+	if (burgerIcon.classList.contains("_active")) {
+		burgerIcon.classList.remove("_active");
+		burgerMenu.classList.remove("_active");
+		document.body.classList.remove("_lock");
+	}
+})
 
-
+/* ------------------------Смена темы ------------------------------*/
 
 /* const block = new Map();
 const blockHeight = new Array();

@@ -82,6 +82,51 @@ body {
 body._lock {
   overflow: hidden;
 }
+body._light-theme {
+  background: #E9EBEC;
+  color: #000;
+}
+body._light-theme .social-item,
+body._light-theme .title-logo {
+  filter: invert(100%);
+}
+body._light-theme .item-info {
+  color: inherit;
+}
+body._light-theme .item-info__name {
+  background: linear-gradient(270deg, #070707 30.93%, #FFFFFF 38.1%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+body._light-theme .input {
+  background: inherit;
+  color: #0E0E0F;
+}
+body._light-theme .input::-moz-placeholder {
+  color: #0E0E0F;
+}
+body._light-theme .input:-ms-input-placeholder {
+  color: #0E0E0F;
+}
+body._light-theme .input::placeholder {
+  color: #0E0E0F;
+}
+body._light-theme .message-contacts__item,
+body._light-theme .form__label {
+  color: #0E0E0F;
+}
+body._light-theme .btn {
+  background: inherit;
+  color: #0E0E0F;
+}
+body._light-theme .message-contacts__title {
+  color: inherit;
+}
+body._light-theme .header-block__tittle h2 {
+  color: inherit;
+}
 
 /*  */
 .wrapper {
@@ -208,7 +253,7 @@ body._lock {
 }
 
 .menu__link {
-  color: inherit;
+  color: #ABB2BF;
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 0.2px;
@@ -350,7 +395,7 @@ body._lock {
 
 /* -----------INFO------------ */
 .page__info {
-  margin: -109px 0px 60px 0px;
+  margin: -99px 0px 60px 0px;
   position: relative;
   z-index: 5;
 }
