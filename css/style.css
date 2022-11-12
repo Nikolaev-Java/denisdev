@@ -86,6 +86,7 @@ body._light-theme {
   background: #E9EBEC;
   color: #000;
 }
+body._light-theme .btn-change-theme,
 body._light-theme .social-item,
 body._light-theme .title-logo {
   filter: invert(100%);

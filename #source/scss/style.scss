@@ -17,6 +17,7 @@ body{
 	&._light-theme{
 		background: #E9EBEC;
 		color: #000;
+		.btn-change-theme,
 		.social-item,
 		.title-logo{
 			filter: invert(100%);
