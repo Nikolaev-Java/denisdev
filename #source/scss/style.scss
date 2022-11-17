@@ -17,10 +17,13 @@ body{
 	&._light-theme{
 		background: #E9EBEC;
 		color: #000;
-		.btn-change-theme,
+		.btn-change-theme1,
 		.social-item,
 		.title-logo{
-			filter: invert(100%);
+			fill: #000;
+		}
+		.btn-change-theme{
+			fill: #E9EBEC;
 		}
 		.item-info{
 			color: inherit;
@@ -29,8 +32,6 @@ body{
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 				background-clip: text;
-				text-fill-color: transparent;
-
 			}
 		}
 		.input{
@@ -179,7 +180,9 @@ body{
 	@media (max-width: 479px) {
 			font-size: 30px;
 	}
-	
+	&._active{
+		color: #FFFFFF;
+	}
 	&:hover{
 		color: #FFFFFF;
 	}
@@ -302,7 +305,7 @@ body{
 
 /* -----------INFO------------ */
 .page__info {
-	margin: -99px 0px 60px 0px;
+	margin: -130px 0px 60px 0px;
 	position: relative;
 	z-index: 5;
 }

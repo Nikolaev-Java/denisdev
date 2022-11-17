@@ -89,7 +89,7 @@ if (headerLink) {
 			const menuLink = e.target;
 			if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) {
 				const goToBlock = document.querySelector(menuLink.dataset.goto);
-				const goToBlockPosition = goToBlock.getBoundingClientRect().top + scrollY - document.querySelector('.header').offsetHeight;
+				const goToBlockPosition = goToBlock.offsetTop - document.querySelector('.header').offsetHeight;
 				if (burgerIcon.classList.contains("_active")) {
 					burgerIcon.classList.remove("_active");
 					burgerMenu.classList.remove("_active");
@@ -106,7 +106,6 @@ if (headerLink) {
 	});
 }
 /* -----------------Скоролл до блока по ссылке-----------------------*/
-
 /* -------------------------Обработка формы--------------------------*/
 const form = document.getElementById("form");
 form.addEventListener('submit', formSend);
@@ -229,21 +228,22 @@ buttonChangeTheme.addEventListener('click', () => {
 })
 
 /* ------------------------Смена темы ------------------------------*/
+/* --------------Подсветка активного пункта меню -------------------*/
+const blockNavigation = document.querySelectorAll("._hightlight-link");
+const hightlightActiveLink = function (entries, observer) {
+	entries.forEach(entry => {
+		const idLink = "." + entry.target.classList[1];
+		const link = document.querySelectorAll(`.menu__link[data-goto]`);
+		if (entry.isIntersecting) {
+			link.forEach(link => {
+				link.classList.toggle("_active", link.dataset.goto === idLink);
+			})
 
-/* const block = new Map();
-const blockHeight = new Array();
-for (let index = 0; index < headerLink.length; index++) {
-	const element = headerLink[index];
-	if (element.dataset.goto && document.querySelector(element.dataset.goto)) {
-		block.set(document.querySelector(element.dataset.goto).getBoundingClientRect().top, document.querySelector(element.dataset.goto));
-		blockHeight.push(document.querySelector(element.dataset.goto).getBoundingClientRect().top);
-	}
+		}
+	});
 }
-console.log(block);
-console.log(blockHeight);
-
-
-document.addEventListener("scroll", function (e) {
-	console.log(scrollY);
-	if()
-}) */
+let observer = new IntersectionObserver(hightlightActiveLink, { threshold: 1 });
+blockNavigation.forEach(element => {
+	observer.observe(element);
+});
+/* --------------Подсветка активного пункта меню -------------------*/
