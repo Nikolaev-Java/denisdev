@@ -242,7 +242,10 @@ const hightlightActiveLink = function (entries, observer) {
 		}
 	});
 }
-let observer = new IntersectionObserver(hightlightActiveLink, { threshold: 1 });
+let options = {
+	threshold: 1,
+}
+let observer = new IntersectionObserver(hightlightActiveLink, options);
 blockNavigation.forEach(element => {
 	observer.observe(element);
 });
