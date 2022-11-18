@@ -92,7 +92,10 @@ body._light-theme .img-block::after {
 body._light-theme .btn-change-theme,
 body._light-theme .social-item,
 body._light-theme .title-logo {
-  filter: invert(100%);
+  fill: #000;
+}
+body._light-theme .btn-change-theme {
+  fill: #E9EBEC;
 }
 body._light-theme .item-info {
   color: inherit;
@@ -266,6 +269,9 @@ body._light-theme .header-block__tittle h2 {
     font-size: 30px;
   }
 }
+.menu__link._active {
+  color: #FFFFFF;
+}
 .menu__link:hover {
   color: #FFFFFF;
 }
@@ -401,7 +407,7 @@ body._light-theme .header-block__tittle h2 {
 
 /* -----------INFO------------ */
 .page__info {
-  margin: -99px 0px 60px 0px;
+  margin: -130px 0px 60px 0px;
   position: relative;
   z-index: 5;
 }
