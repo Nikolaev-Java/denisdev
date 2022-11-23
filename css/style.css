@@ -375,16 +375,14 @@ body._light-theme .header-block__tittle h2 {
 /* ---------Main-block-img-------------- */
 .img-block {
   position: relative;
-  padding: 0px 0px 650px 0px;
+  padding: 0px 0px 42% 0px;
+  /* @media (max-width:767px) {
+  	padding: 0px 0px 400px 0px;
+  } */
 }
-@media (max-width: 1024px) {
+@media (max-width: 1300px) {
   .img-block {
     padding: 0px 0px 550px 0px;
-  }
-}
-@media (max-width: 767px) {
-  .img-block {
-    padding: 0px 0px 400px 0px;
   }
 }
 .img-block::after {
